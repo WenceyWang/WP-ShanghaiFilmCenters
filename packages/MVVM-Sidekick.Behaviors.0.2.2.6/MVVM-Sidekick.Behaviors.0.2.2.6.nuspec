@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>MVVM-Sidekick.Behaviors</id>
+    <version>0.2.2.6</version>
+    <title>MVVM Sidekick Behaviors</title>
+    <authors>Wayne Wang</authors>
+    <owners>Wayne Wang</owners>
+    <projectUrl>https://github.com/waynebaby/MVVM-Sidekick</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MVVM-Sidekick https://github.com/waynebaby/MVVM-Sidekick/
+      =============
+      MVVM密友 https://github.com/waynebaby/MVVM-Sidekick/
+      ===================
+
+
+      A Modern light-weight MVVM framework based on RX and TPL await
+
+      轻量级MVVM框架,基于RX与 await等新技术
+
+
+      [微博] [twitter] [Mail]
+      [微博]: http://www.weibo.com/waynebabywang "WaynebabyWang"
+      [twitter]: http://twitter.com/waynebaby "Waynebaby"
+      [Mail]: mailto:blackshaman_wayne@hotmail.com "MSN Skype"</description>
+    <summary>https://github.com/waynebaby/MVVM-Sidekick/
+
+      This Package helps you config MVVM-Sidekick bindings such as "stage beacons" and "item selecteion patterns" with Blend behaviors</summary>
+    <releaseNotes>0.2.2.6
+      Update with Main Lib
+
+
+      0.2.2.5
+      Update with Main Lib
+
+      0.2.2.4
+      Add Application Bar Item binding Action
+      Add SendToEventRouterAction to wire a Event to ViewModel's EventRouter or the Public static EventRouter</releaseNotes>
+    <tags>Rx Reactive Extensions MVVM Win8 Metro Modern UI</tags>
+    <dependencies>
+      <dependency id="Rx-Main" version="[2.2.2, 3.0)" />
+      <dependency id="Rx-PlatformServices" version="[2.2.3, 3.0)" />
+      <dependency id="Rx-Interfaces" version="[2.2.2, 3.0)" />
+      <dependency id="Rx-Core" version="[2.2.2, 3.0)" />
+      <dependency id="Rx-Linq" version="[2.2.2, 3.0)" />
+      <dependency id="Rx-Xaml" version="[2.2.2, 3.0)" />
+      <dependency id="MVVM-Sidekick" version="[1.2.2.5, 2.0)" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework=".NETFramework4.0" />
+      <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework="WindowsPhone8.0" />
+      <frameworkAssembly assemblyName="System.Windows.Interactivity" targetFramework="Silverlight5.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

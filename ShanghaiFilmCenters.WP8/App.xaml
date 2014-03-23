@@ -1,0 +1,62 @@
+﻿<Application
+    x:Class="ShanghaiFilmCenters.WP8.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+
+    <!--Application Resources-->
+    <Application.Resources>
+        <local:LocalizedStrings xmlns:local="clr-namespace:ShanghaiFilmCenters.WP8" x:Key="LocalizedStrings"/>
+
+        <phone:JumpListItemBackgroundConverter x:Key="BackgroundConverter"/>
+        <phone:JumpListItemForegroundConverter x:Key="ForegroundConverter"/>
+
+        <Style x:Key="MovieListJumpListStyle" TargetType="phone:LongListSelector">
+            <Setter Property="LayoutMode" Value="List" />
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Border Background="#F0623E" Width="400" Height="90" Margin="6" >
+                            <TextBlock Text="{Binding Title}" 
+                                       FontFamily="{StaticResource PhoneFontFamilySemiBold}" 
+                                       FontSize="30" 
+                                       Padding="6" 
+                                       Foreground="White" 
+                                       VerticalAlignment="Center"/>
+                        </Border>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HeadingStackPannelStyle" TargetType="StackPanel">
+            <Setter Property="Background" Value="#D24726" />
+        </Style>
+
+        <Style x:Key="LabelTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#D24726" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+
+        <Style x:Key="BigButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FCE4DC"/>
+            <Setter Property="BorderBrush" Value="#FFF5BA9D" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="Height" Value="96"/>
+            <Setter Property="Foreground" Value="#D24726"/>
+        </Style>
+
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService
+            Launching="Application_Launching" Closing="Application_Closing"
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>
