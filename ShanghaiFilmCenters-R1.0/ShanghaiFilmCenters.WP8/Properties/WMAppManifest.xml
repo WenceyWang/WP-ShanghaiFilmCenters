@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
+  <DefaultLanguage xmlns="" code="zh-CN" />
+  <Languages xmlns="">
+    <Language code="zh-CN" />
+  </Languages>
+  <App xmlns="" ProductID="{9c99a036-5ee4-4cb4-b25c-19c6d9e5d8e0}" Title="上海影城排片查询" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Edi Wang" Description="查询上海几所影城最新上映的电影。&#xD;&#xA;- 显示票价、放映厅、放映时间&#xD;&#xA;- 保存到日历并定时提醒&#xD;&#xA;- 查看影院地址&#xD;&#xA;- 直接呼叫影院电话&#xD;&#xA;- 邮件、短信分享&#xD;&#xA;数据来自上海影城官网，一般只更新未来3天的排片表。" Publisher="diaosbook.com" PublisherID="{f9e44292-f020-41ae-8aa4-b6c646c57853}">
+    <IconPath IsRelative="true" IsResource="false">Assets\appbar.smiley.glasses.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_APPOINTMENTS" />
+      <Capability Name="ID_CAP_PHONEDIALER" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="ShanghaiFilmCenters.WP8Token" TaskName="_default">
+        <TemplateFlip>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\appbar.smiley.glasses.tilesmall.png</SmallImageURI>
+          <Count>0</Count>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\appbar.smiley.glasses.tilemedium.png</BackgroundImageURI>
+          <Title>上海影城排片</Title>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
+          <HasLarge>
+          </HasLarge>
+        </TemplateFlip>
+      </PrimaryToken>
+    </Tokens>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>

@@ -1,0 +1,88 @@
+﻿<mvvm:MVVMPage
+    x:Class="ShanghaiFilmCenters.WP8.About"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:mvvm="clr-namespace:MVVMSidekick.Views;assembly=MVVMSidekick_Wp8"
+    xmlns:vm="clr-namespace:ShanghaiFilmCenters.WP8.ViewModels"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    <mvvm:MVVMPage.Resources >
+        <vm:About_Model x:Key="DesignVm" />
+    </mvvm:MVVMPage.Resources>
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn" />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut" />
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut" />
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Opacity="0.8">
+            <shell:ApplicationBarIconButton 
+                IconUri="/Assets/appbar.information.png" 
+                Text="关于" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="上海影城查询" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="关于" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="235*"/>
+                <RowDefinition Height="372*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock HorizontalAlignment="Left" FontSize="28" Margin="10,10,0,0" TextWrapping="Wrap" Text="本客户端" VerticalAlignment="Top" Foreground="{StaticResource PhoneInverseInactiveBrush}" Height="37" Width="112"/>
+
+            <TextBlock Grid.Row="0" FontSize="22" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="本软件非上海影城官方客户端，纯属屌丝程序员个人兴趣开发。数据来自上海影城官网（www.filmcenter.com.cn）。数据的版权归上海影城所有。" VerticalAlignment="Top" Height="140" Width="441" Foreground="#FF939393"/>
+
+            <HyperlinkButton Grid.Row="0" Content="上海影城官网" HorizontalAlignment="Left" Margin="0,158,0,0" VerticalAlignment="Top" Height="72" Width="160"/>
+
+            <TextBlock Grid.Row="1" HorizontalAlignment="Left" FontSize="28" Margin="10,10,0,0" TextWrapping="Wrap" Text="软件作者" VerticalAlignment="Top" Foreground="{StaticResource PhoneInverseInactiveBrush}" Height="37" Width="112"/>
+
+            <TextBlock Grid.Row="1" FontSize="22" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="汪宇杰，diaosbook.com站长，ASP.NET程序员，微软脑残粉。第一次开发WP软件，所以软件如果爆掉是很正常的。如果软件不好用了或者要吐槽，欢迎发送邮件到 Edi_Wang@outlook.com" VerticalAlignment="Top" Height="151" Width="441" Foreground="#FF939393"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="10,208,0,0" Grid.Row="1" TextWrapping="Wrap" Foreground="#FF939393" Text="感谢：@韦恩卑鄙 提供的 MVVM-Sidekick 框架" VerticalAlignment="Top"/>
+            <HyperlinkButton Content="diaosbook.com" TargetName="LayoutRoot" NavigateUri="http://diaosbook.com" HorizontalAlignment="Left" Margin="0,251,0,0" Grid.Row="1" VerticalAlignment="Top" Height="31" Width="178"/>
+
+        </Grid>
+    </Grid>
+
+</mvvm:MVVMPage>
