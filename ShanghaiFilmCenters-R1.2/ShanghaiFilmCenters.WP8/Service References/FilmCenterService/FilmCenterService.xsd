@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ShanghaiFilmCenters.Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ShanghaiFilmCenters.Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ResponseOfArrayOfMovieInfoLOQBF9SM">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ShanghaiFilmCenters.Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfMovieInfo" Namespace="http://schemas.datacontract.org/2004/07/ShanghaiFilmCenters.Service" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Item" nillable="true" type="tns:ArrayOfMovieInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResponseOfArrayOfMovieInfoLOQBF9SM" nillable="true" type="tns:ResponseOfArrayOfMovieInfoLOQBF9SM" />
+  <xs:complexType name="Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Response" nillable="true" type="tns:Response" />
+  <xs:complexType name="ArrayOfMovieInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MovieInfo" nillable="true" type="tns:MovieInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovieInfo" nillable="true" type="tns:ArrayOfMovieInfo" />
+  <xs:complexType name="MovieInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FilmCenterName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hall" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MovieInfo" nillable="true" type="tns:MovieInfo" />
+  <xs:complexType name="ResponseOfArrayOfFilmCenterLOQBF9SM">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/ShanghaiFilmCenters.Service" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfFilmCenter" Namespace="http://schemas.datacontract.org/2004/07/ShanghaiFilmCenters.Service" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Response">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Item" nillable="true" type="tns:ArrayOfFilmCenter" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResponseOfArrayOfFilmCenterLOQBF9SM" nillable="true" type="tns:ResponseOfArrayOfFilmCenterLOQBF9SM" />
+  <xs:complexType name="ArrayOfFilmCenter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FilmCenter" nillable="true" type="tns:FilmCenter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilmCenter" nillable="true" type="tns:ArrayOfFilmCenter" />
+  <xs:complexType name="FilmCenter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DetailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FilmCenter" nillable="true" type="tns:FilmCenter" />
+</xs:schema>
