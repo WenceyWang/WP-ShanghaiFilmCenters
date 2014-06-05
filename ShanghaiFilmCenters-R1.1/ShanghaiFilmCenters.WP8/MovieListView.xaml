@@ -1,0 +1,134 @@
+﻿<mvvm:MVVMPage 
+    x:Class="ShanghaiFilmCenters.WP8.MovieListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"    
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    xmlns:mvvm="clr-namespace:MVVMSidekick.Views;assembly=MVVMSidekick_Wp8"
+    xmlns:vm="clr-namespace:ShanghaiFilmCenters.WP8.ViewModels"
+    xmlns:wp8="clr-namespace:ShanghaiFilmCenters.WP8"
+    xmlns:edi="clr-namespace:ShanghaiFilmCenters.WP8.Controls;assembly=ShanghaiFilmCenters.WP8"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit">
+    <mvvm:MVVMPage.Resources>
+        <vm:MovieListView_Model x:Key="DesignVm" />
+        <shell:ProgressIndicator x:Key="idk" 
+                                 IsVisible="{Binding DataContext.Busy, ElementName=LayoutRoot}" 
+                                 IsIndeterminate="{Binding DataContext.Busy, ElementName=LayoutRoot}" 
+                                 Text="{Binding DataContext.Message, ElementName=LayoutRoot}" />
+    </mvvm:MVVMPage.Resources>
+
+    <shell:SystemTray.ProgressIndicator>
+        <Binding Source="{StaticResource idk}"/>
+    </shell:SystemTray.ProgressIndicator>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar Opacity="0.8">
+            <shell:ApplicationBarIconButton 
+                IconUri="/Assets/appbar.refresh.png" 
+                Text="刷新" Click="ButtonRefresh_OnClick" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent" DataContext="{StaticResource DesignVm}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="{Binding SelectedDate, Mode=TwoWay, StringFormat='yyyy-M-d dddd'}" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource PhoneBorderBrush}"/>
+            <TextBlock Text="{Binding SelectedFilmCenter.DisplayName, Mode=TwoWay}" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <edi:ProgressRing Foreground="White" HorizontalAlignment="Left" Margin="199,272,0,0" VerticalAlignment="Top" IsActive="{Binding Busy, Mode=TwoWay}"/>
+
+            <phone:LongListSelector HorizontalAlignment="Left" 
+                                    Height="555" VerticalAlignment="Top" 
+                                    Width="436" 
+                                    toolkit:TiltEffect.IsTiltEnabled="True"
+                                    ItemsSource="{Binding GroupedQueryResults, Mode=TwoWay}" 
+                                    LayoutMode="List"
+                                    IsGroupingEnabled="True"
+                                    HideEmptyGroups="True"
+                                    Margin="10,-20,0,0"
+                                    JumpListStyle="{StaticResource MovieListJumpListStyle}"
+                                    >
+                <phone:LongListSelector.GroupHeaderTemplate>
+                    <DataTemplate>   
+                        <Border Background="Transparent" Padding="5">
+                            <Border 
+                                BorderThickness="5,0,0,0" 
+                                Height="62" 
+                                Margin="-5,20,-5,5"
+                                HorizontalAlignment="Left" Width="423" Background="#FF0072BC">
+                                <Border.BorderBrush>
+                                    <SolidColorBrush Color="#FFFF8B00"/>
+                                </Border.BorderBrush>
+                                <TextBlock Text="{Binding Title}" 
+                                           FontSize="36" 
+                                           Padding="6" 
+                                           FontFamily="{StaticResource PhoneFontFamilySemiLight}" 
+                                           HorizontalAlignment="Left" 
+                                           VerticalAlignment="Center">
+                                    <TextBlock.Foreground>
+                                        <SolidColorBrush Color="White"/>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                            </Border>
+                        </Border>
+                    </DataTemplate>
+                </phone:LongListSelector.GroupHeaderTemplate>
+                <phone:LongListSelector.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal"  Margin="0,0,0,15">
+                            
+                            <toolkit:ContextMenuService.ContextMenu>
+                                <toolkit:ContextMenu>
+                                    <toolkit:MenuItem Click="MenuSaveToCalendar_Click" Header="加入日历" />
+                                    <toolkit:MenuItem Click="MenuSendToSMS_Click" Header="发短信至..." />
+                                    <toolkit:MenuItem Click="MenuSendToEmail_Click" Header="发邮件至..." />
+                                </toolkit:ContextMenu>
+                            </toolkit:ContextMenuService.ContextMenu>
+                            
+                            <TextBlock Text="{Binding StartTime, Mode=TwoWay, StringFormat='HH:mm'}" 
+                                           FontSize="55" 
+                                           Foreground="{StaticResource PhoneForegroundBrush}" 
+                                           HorizontalAlignment="Left" 
+                                           Width="135" VerticalAlignment="Top" 
+                                           FontFamily="Segoe WP Light" />
+
+                            <Border BorderBrush="#FF00BDBD" BorderThickness="5,0,0,0" Margin="0,0,10,0"></Border>
+
+                            <StackPanel Orientation="Vertical" Width="272" >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Price, Mode=TwoWay}" 
+                                           FontSize="34" 
+                                           Foreground="Gray" 
+                                           HorizontalAlignment="Left" 
+                                           Margin="0,0,0,0" />
+
+                                    <TextBlock Text="{Binding Hall, Mode=TwoWay}" FontSize="24" Foreground="Gray" HorizontalAlignment="Left" Margin="10,10,0,0" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Language, Mode=TwoWay}" FontSize="24" Foreground="Gray" HorizontalAlignment="Left" />
+                                    <TextBlock Text="{Binding FilmCenterName, Mode=TwoWay}" FontSize="24" Foreground="Gray" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </phone:LongListSelector.ItemTemplate>
+            </phone:LongListSelector>
+        </Grid>
+    </Grid>
+
+</mvvm:MVVMPage>
